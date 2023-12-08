@@ -7,21 +7,20 @@
 </head>
 <body>
     <!--サンプルココから-->
+    <link rel="stylesheet" href="contorol_bar.css">
     <video id="video01" src="sample.mp4"></video>
     <div class="Control_bar">
-        <div id="play">プレイ</div>
-        <div id="stop">ストップ</div>
-        <div id="atama">頭出し</div>
-        <div id="vol-up">音量アップ</div>
-        <div id="vol-down">音量ダウン</div>
-        <div id="mute">ミュート</div>
-        <p>音量：</p><div id="vol"></div>
+        <span id="play">[プレイ]</span>
+        <span id="stop">[ストップ]</span>
+        <span id="atama">[頭出し]</span>
+        <span id="vol-up">[音量アップ]</span>
+        <span id="vol-down">[音量ダウン]</span>
+        <span id="mute">[ミュート]</span>
+        <span>[音量<span id="vol"></span>]</span>
+        <progress max="1" id="pro01"></progress>
     </div> 
     <script src="jquery-3.3.1.min.js"></script>
     <script>
-        var cb = document.querySelector(".Control_bar");
-        var v = document.querySelector(".video01");
-        cb.style.width = v.style.width;
         $(function(){ 
          // 操作対象のvideoを指定
          var video = $('#video01').get(0); 
@@ -56,6 +55,16 @@
          //音量表示
          $("#vol").text(video.volume);
         });
+        window.onload = function() {
+            var cb = document.querySelector(".Control_bar");
+            var v = document.querySelector("#video01");
+            cb.style.width = v.style.width;
+        };
+        var pro_ = document.querySelector("#pro01");
+        var v = document.querySelector("#video01");
+        for(let i = 1;i++;i<0){
+            pro_.value = v.duration / v.currentTime;
+        }
         </script>
     <!--サンプルここまで-->
 </body>
