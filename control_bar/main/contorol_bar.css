@@ -1,0 +1,6 @@
+.Control_bar {
+    position: fixed;
+    height: 20px;
+    background-color: black;
+    color: #fff;
+}
