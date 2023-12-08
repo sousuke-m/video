@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Control Bar サンプル</title>
+</head>
+<body>
+    <!--サンプルココから-->
+    <video id="video01" src="sample.mp4"></video>
+    <div id="play">プレイ</div>
+    <div id="stop">ストップ</div>
+    <div id="atama">頭出し</div>
+    <div id="vol-up">音量アップ</div>
+    <div id="vol-down">音量ダウン</div>
+    <div id="mute">ミュート</div>
+    <p>音量：</p><div id="vol"></div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){ 
+         // 操作対象のvideoを指定
+         var video = $('#video01').get(0); 
+         // 動画の再生 
+         $('#play').click(function(){
+          video.play();
+         }); 
+         // 動画の一時停止
+         $('#stop').click(function(){
+          video.pause(); 
+         });
+         // 動画の頭出し（任意の秒へ移動）
+         $('#atama').click(function(){
+          video.currentTime = 0; // 入れた秒の位置へ移動（例は0秒）
+         });
+         // 音声ミュート（トグル式）
+         $('#mute').click(function(){
+          video.muted = video.muted ? false : true;
+         }); 
+         //音量アップ
+         $('#vol-up').click(function(){
+          if(video.volume <= 0.75){
+             video.volume = video.volume + 0.25;
+             $("#vol").text(video.volume);
+          }
+         }); 
+         //音量ダウン
+         $('#vol-down').click(function(){
+          video.volume = video.volume - 0.25;
+          $("#vol").text(video.volume);
+         });
+         //音量表示
+         $("#vol").text(video.volume);
+        });
+        </script>
+    <!--サンプルここまで-->
+</body>
+</html>
